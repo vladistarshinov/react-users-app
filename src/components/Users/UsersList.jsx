@@ -1,25 +1,25 @@
 import React, { Fragment } from 'react';
 import isEmpty from '../../plugins/isEmpty';
 
-const Users = ({ users }) => {
+const Users = ({ users, setToken }) => {
   return !isEmpty(users) ? (
     <Fragment>
       <table>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Username</th>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>Id</th>
+            <th>Логин</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
           </tr>
         </thead>
         <tbody>
           {users.map((user) => (
             <tr key={user.id}>
-              <th>{user.id}</th>
-              <th>{user.username}</th>
-              <th>{user.first_name}</th>
-              <th>{user.last_name}</th>
+              <td>{user.id}</td>
+              <td>{user.username}</td>
+              <td>{user.first_name}</td>
+              <td>{user.last_name}</td>
             </tr>
           ))}
         </tbody>

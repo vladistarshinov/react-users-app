@@ -7,6 +7,7 @@ const useAuthForm = (validate, { setToken }) => {
     let controller = new AbortController();
     const [isLoading, setIsLoading] = useState(false);
     const history = useHistory();
+    const baseURL = 'https://emphasoft-test-assignment.herokuapp.com/';
 
     const controlChange = e => {
         const { name, value } = e.target;
@@ -20,7 +21,7 @@ const useAuthForm = (validate, { setToken }) => {
         setIsLoading(true);
 
         try {
-          const response = await fetch('https://emphasoft-test-assignment.herokuapp.com/api-token-auth/', {
+          const response = await fetch(baseURL + 'api-token-auth/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json;charset=utf-8'
@@ -31,10 +32,11 @@ const useAuthForm = (validate, { setToken }) => {
               password: values.password
             })
           });
-
           if (response.ok) {
             let json = await response.json();
             setToken(json.token);
+            console.log(json.token);
+            localStorage.setItem('token', json.token);
             history.push('users');
           } else {
             setErrors(validate(values));
@@ -50,11 +52,11 @@ const useAuthForm = (validate, { setToken }) => {
         }     
     }
 
-         useEffect(() => {
-          return () => {
-            controller.abort()
-          }
-        }, []); 
+    useEffect(() => {
+    return () => {
+      controller.abort()
+    }
+  }, []); 
 
 
     return {
