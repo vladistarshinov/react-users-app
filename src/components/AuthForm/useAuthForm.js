@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import {useHistory} from 'react-router-dom';
-import validate from '../../plugins/validate';
 
 const useAuthForm = (validate, { setToken }) => {
     const [values, setValues] = useState({ username: "test_super", password: "Nf<U4f<rDbtDxAPn" });
@@ -20,11 +19,8 @@ const useAuthForm = (validate, { setToken }) => {
         e.preventDefault();
         setIsLoading(true);
 
-        if (Object.keys(errors).length === 0 && isLoading) {
-          setErrors(validate(values));
-        }
-
-        const response = await fetch('https://emphasoft-test-assignment.herokuapp.com/api-token-auth/', {
+        try {
+          const response = await fetch('https://emphasoft-test-assignment.herokuapp.com/api-token-auth/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json;charset=utf-8'
@@ -34,25 +30,31 @@ const useAuthForm = (validate, { setToken }) => {
               username: values.username,
               password: values.password
             })
+          });
+
+          if (response.ok) {
+            let json = await response.json();
+            setToken(json.token);
+            history.push('users');
+          } else {
+            setErrors(validate(values));
           }
-        );
-    
-        if (response.ok) {
-          let json = await response.json();
-          setToken(json.token);
-          history.push('users')
-        } else {
-          setErrors(validate(values));
-        }
-        setIsLoading(false);
-      };
-    
-      useEffect(() => {
-        return () => {
-          controller.abort()
-        }
-      }, []);
-    
+          setIsLoading(false);
+        }  catch(err) { 
+          if (err.name === 'AbortError') {
+            alert('При входе возникли проблемы. Попробуйте зайти позже!');
+            setIsLoading(false);
+          } else {
+            throw err;
+          }
+        }     
+    }
+
+         useEffect(() => {
+          return () => {
+            controller.abort()
+          }
+        }, []); 
 
 
     return {

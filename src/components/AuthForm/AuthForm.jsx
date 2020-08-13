@@ -1,15 +1,22 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import validate from '../../plugins/validate';
 import classNames from 'classnames';
-import {useHistory} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import useAuthForm from './useAuthForm';
 /* import M from 'materialize-css'; */
 
-const AuthForm = ({setToken}) => {
+const AuthForm = ({ token, setToken }) => {
     const { controlChange, controlSubmit, values, errors, isLoading } = useAuthForm(validate, { setToken });
 
-    return (
+    return token ? (
+        <Fragment>
+            <span>You are already authorized</span>
+            <span>
+                <Link to='/users'>Users List</Link>
+            </span>
+        </Fragment>
+    ) : (
         <Fragment>
         <div className="row">
             <div className="col">
