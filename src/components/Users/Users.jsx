@@ -1,23 +1,24 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { BDiv } from 'bootstrap-4-react';
 
 import UsersList from './UsersList';
 import FilterSearch from './FilterSearch';
 import Pagination from './Pagination';
 
-import useUsers from './useUsers';
+import useUsersElements from './useUsersElements';
 import isEmpty from '../../plugins/isEmpty';
 
 const Users = ({ token, setToken }) => {
- const { users, filteredUsers, onSearch, submitSort, currentListOfUsers, usersPerPage, paginate } = useUsers({ token, setToken });
+ const { users, filteredUsers, onSearch, submitSort, currentListOfUsers, usersPerPage, paginate } = useUsersElements({ token, setToken });
   console.log(usersPerPage);
   return token ? (
     <Fragment>
-      <FilterSearch onSearch={onSearch} />
+      <FilterSearch onSearch={onSearch} setToken={setToken} />
       { isEmpty(users) ? (
-        <p>Пользователей нет в системе. Добавьте пользователей</p>
+        <h4 className="text-center">Загрузка...</h4>
       ) : isEmpty(filteredUsers) && filteredUsers ? (
-        <p>Пользователей с таким логином не найдено!</p>
+        <h5 className="text-center">Пользователей с таким логином не найдено!</h5>
       ) : (
         <Fragment>
           <UsersList 
@@ -31,10 +32,10 @@ const Users = ({ token, setToken }) => {
     </Fragment>
     ) : (
     <Fragment>
-      <p>Вы не авторизованы!</p>
-      <p>
-          <Link to='/'>Sign In</Link>
-      </p>
+      <h5 className="text-center">Вы не авторизованы!</h5>
+      <BDiv className="text-center mt-5">
+        <Link to='/' className="home__btn home__btn-back">Назад</Link>
+      </BDiv>  
     </Fragment>
   );
 };

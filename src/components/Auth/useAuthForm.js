@@ -7,6 +7,7 @@ const useAuthForm = (validate, { setToken }) => {
     const [isLoading, setIsLoading] = useState(false);
     const history = useHistory();
     const baseURL = 'https://emphasoft-test-assignment.herokuapp.com/';
+    const APItoken = 'api-token-auth/';
 
     const controlChange = e => {
         const { name, value } = e.target;
@@ -20,7 +21,7 @@ const useAuthForm = (validate, { setToken }) => {
         setIsLoading(true);
 
         try {
-          const response = await fetch(baseURL + 'api-token-auth/', {
+          const response = await fetch(baseURL + APItoken, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json;charset=utf-8'

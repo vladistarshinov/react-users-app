@@ -1,10 +1,14 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
 //Colors
 $off-white: #ebe8e8;
 $off-black: #333;
 $green: #57b846;
-$success-answer: #3f8b32;
 $red: #ea4355;
-$error-answer: #f44336;
+$error: #f44336;
 $orange: #ffc400;
 $blue: #358BF0;
 $blue-dark: #005194;
@@ -18,7 +22,7 @@ $lg: 3rem;
 $xl: 5rem;
 $xxl: 7rem;
 
-/* $quicksandFont: 'Quicksand', sans-serif; */
+//button-radius
 $button-radius-md: 30px;
 
 // Adaptive screens
@@ -29,3 +33,8 @@ $xs-screen: 480px;
 
 // Shadow
 $shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .2);
+
+
+.cursor-pointer {
+    cursor: pointer;
+}

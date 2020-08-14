@@ -3,15 +3,16 @@ import {useHistory} from 'react-router-dom';
 
 import _ from 'lodash';
 
-const useUsers = ({ token, setToken }) => {
+const useUsersElements = ({ token, setToken }) => {
     const [users, setUsers] = useState([]);
     const [sortType, setSortType] = useState('asc'); 
     const [filteredUsers, setFilteredUsers] = useState(null);
-    const baseURL = 'https://emphasoft-test-assignment.herokuapp.com/';
-    const history = useHistory();
-
     const [currentPage, setCurrentPage] = useState(1);
-    const [usersPerPage] = useState(10);
+    const [usersPerPage] = useState(20);
+
+    const baseURL = 'https://emphasoft-test-assignment.herokuapp.com/';
+    const APIusers = 'api/v1/users/';
+    const history = useHistory();
 
     const indexOfLastListOfUsers = currentPage * usersPerPage;
     const indexOfFirstListOfUsers = indexOfLastListOfUsers - usersPerPage;
@@ -45,10 +46,9 @@ const useUsers = ({ token, setToken }) => {
     
     
     useEffect(() => {
-  
       const getUsers = async (token) => {
         try {
-          const response = await fetch(baseURL + 'api/v1/users/', {
+          const response = await fetch(baseURL + APIusers, {
               method: 'GET',
               headers: {
                 Authorization: `Token ${token}`,
@@ -72,6 +72,7 @@ const useUsers = ({ token, setToken }) => {
       };
     }, [token]);
 
+    
     const controlLogout = useCallback(
       () => {
         setToken(null);
@@ -94,4 +95,4 @@ const useUsers = ({ token, setToken }) => {
   
 };
 
-export default useUsers;
+export default useUsersElements;

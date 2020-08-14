@@ -1,7 +1,7 @@
 @import './settings';
 
 #home {
-    background-image: url(../../assets/images/Home/main.jpg);
+    background-image: url(../assets/images/Home/main.jpg);
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -32,7 +32,7 @@
     
     .input-field input[type=text].inputError, 
     .input-field input[type=password].inputError {
-        border-bottom: 1px solid $red;
+        border-bottom: 1px solid $error;
         box-shadow: $shadow;
     }
 
@@ -59,6 +59,18 @@
 
             &:hover {
                 background-color: darken($red, 10%);
+                box-shadow: $shadow;
+            }
+        }
+
+        &-back {
+            padding: $xs $xs;
+            border-radius: inherit;
+            width: 45%;
+            background-color: $blue;
+
+            &:hover {
+                background-color: darken($blue, 10%);
                 box-shadow: $shadow;
             }
         }

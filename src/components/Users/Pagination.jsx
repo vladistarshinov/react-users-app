@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+import { Nav } from 'bootstrap-4-react';
 
 const Pagination = ({ usersPerPage, totalListOfUsers, paginate }) => {
     const pageNumber = [];
@@ -8,17 +10,15 @@ const Pagination = ({ usersPerPage, totalListOfUsers, paginate }) => {
     }
 
     return (
-        <>
-            <nav>
-                <ul className="pagination">
-                    {pageNumber.map(number => (
-                        <li key={number} className="page-item">
-                            <a onClick={() => paginate(number)} href="!#" className="page-link">{number}</a>
-                        </li>
-                    ))}
-                </ul>
-            </nav>
-        </>
+        <Nav display="flex" justifyContent="center" alignItems="center">
+            <ul className="pagination">
+                {pageNumber.map(number => (
+                    <li key={number} className="page-item">
+                        <Link onClick={() => paginate(number)} to="users#" className="page-link">{number}</Link>
+                    </li>
+                ))}
+            </ul>
+        </Nav>
     )
 }
 

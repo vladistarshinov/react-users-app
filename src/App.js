@@ -12,6 +12,7 @@ function App() {
       setToken(ls);
     }
   }, [ls]);
+  
   return (
     <Router>
       <div>

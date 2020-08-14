@@ -1,30 +1,27 @@
 import React, { Fragment } from 'react';
 
-import useUsers from './useUsers';
+import ArrowUpDownIcon from 'mdi-react/ArrowUpDownIcon';
 
+const Users = ({ users, submitSort }) => {
 
-const Users = ({ users, token, setToken, submitSort }) => {
-  const { controlLogout } = useUsers({ token, setToken });
-  console.log('render');
   return (
     <Fragment>
-      <button onClick={controlLogout}>Выход</button>
-      <table>
+      <table class="table table-hover">
         <thead>
           <tr>
-            <th onClick={submitSort}>ID</th>
-            <th>Логин</th>
-            <th>Фамилия</th>
-            <th>Имя</th>
+            <th className="text-center cursor-pointer" onClick={submitSort}># <ArrowUpDownIcon /> </th>
+            <th className="text-center">Логин</th>
+            <th className="text-center">Фамилия</th>
+            <th className="text-center">Имя</th>
           </tr>
         </thead>
         <tbody>
           {users.map((user) => (
             <tr key={user.id}>
-              <td>{user.id}</td>
-              <td>{user.username}</td>
-              <td>{user.last_name}</td>
-              <td>{user.first_name}</td>
+              <td className="text-center">{user.id}</td>
+              <td className="text-center">{user.username}</td>
+              <td className="text-center">{user.last_name}</td>
+              <td className="text-center">{user.first_name}</td>
             </tr>
           ))}
         </tbody>
