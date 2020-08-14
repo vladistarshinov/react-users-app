@@ -2,13 +2,14 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import useUsers from './useUsers';
 import UsersList from './UsersList';
+import FilterSearch from './FilterSearch';
 
 const Users = ({ token, setToken }) => {
- const { users, controlLogout } = useUsers({ token, setToken });
+ const { users, filteredData, onSearch, submitSort } = useUsers({ token, setToken });
   return token ? (
     <Fragment>
-      <button onClick={controlLogout}>fdsfd</button>
-      <UsersList users={ users } />
+      <FilterSearch onSearch={onSearch} />
+      <UsersList submitSort={submitSort} users={filteredData ? filteredData : users} setToken={setToken} />
     </Fragment>
   ) : (
     <Fragment>

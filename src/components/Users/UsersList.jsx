@@ -1,13 +1,19 @@
 import React, { Fragment } from 'react';
 import isEmpty from '../../plugins/isEmpty';
 
-const Users = ({ users, setToken }) => {
+import useUsers from './useUsers';
+
+
+const Users = ({ users, token, setToken, submitSort }) => {
+  const { controlLogout } = useUsers({ token, setToken });
+  console.log('render');
   return !isEmpty(users) ? (
     <Fragment>
+      <button onClick={controlLogout}>Выход</button>
       <table>
         <thead>
           <tr>
-            <th>Id</th>
+            <th onClick={submitSort}>ID</th>
             <th>Логин</th>
             <th>Имя</th>
             <th>Фамилия</th>
@@ -26,7 +32,10 @@ const Users = ({ users, setToken }) => {
       </table>
     </Fragment>
   ) : (
-    <p>Пользователей не обнаружено. Добавьте пользователей</p>
+    <Fragment>
+      <p>Пользователей не обнаружено. Добавьте пользователей</p>
+      {<button onClick={controlLogout}>fdsfd</button>}
+    </Fragment>
   );
 };
 

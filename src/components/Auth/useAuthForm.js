@@ -4,15 +4,15 @@ import {useHistory} from 'react-router-dom';
 const useAuthForm = (validate, { setToken }) => {
     const [values, setValues] = useState({ username: "test_super", password: "Nf<U4f<rDbtDxAPn" });
     const [errors, setErrors] = useState({});
-    let controller = new AbortController();
     const [isLoading, setIsLoading] = useState(false);
     const history = useHistory();
+    let controller = new AbortController();
     const baseURL = 'https://emphasoft-test-assignment.herokuapp.com/';
 
     const controlChange = e => {
         const { name, value } = e.target;
         setValues({
-            ...values, [name]: value
+          ...values, [name]: value
         })
     };
 
