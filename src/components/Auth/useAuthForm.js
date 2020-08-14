@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {useHistory} from 'react-router-dom';
 
 const useAuthForm = (validate, { setToken }) => {
@@ -6,7 +6,6 @@ const useAuthForm = (validate, { setToken }) => {
     const [errors, setErrors] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const history = useHistory();
-    let controller = new AbortController();
     const baseURL = 'https://emphasoft-test-assignment.herokuapp.com/';
 
     const controlChange = e => {
@@ -26,7 +25,6 @@ const useAuthForm = (validate, { setToken }) => {
             headers: {
               'Content-Type': 'application/json;charset=utf-8'
             },
-            signal: controller.signal,
             body: JSON.stringify({
               username: values.username,
               password: values.password
@@ -51,13 +49,6 @@ const useAuthForm = (validate, { setToken }) => {
           }
         }     
     }
-
-    useEffect(() => {
-    return () => {
-      controller.abort()
-    }
-  }, []); 
-
 
     return {
         controlChange,

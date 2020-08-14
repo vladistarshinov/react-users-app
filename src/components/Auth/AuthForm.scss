@@ -1,8 +1,94 @@
+@import './settings';
+
+#home {
+    background-image: url(../../assets/images/Home/main.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.home {
+    background-color: rgba(0, 0, 0, .65);
+    padding: 0 $md;
+    height: 75%;
+    width: 45%;
+
+    &__title {
+        font-size: $lg;
+        color: $off-white;
+        font-weight: 400;
+    }
+
+    .input-field input[type=text]:focus {
+        border-bottom: 1px solid blue;
+        box-shadow: 0 1px 0 0 #000;
+      }
+    
+    .input-field input[type=text].validate {
+        border-bottom: 1px solid green;
+        box-shadow: 0 1px 0 0 #000;
+    }
+    
+    .input-field input[type=text].inputError, 
+    .input-field input[type=password].inputError {
+        border-bottom: 1px solid red;
+        box-shadow: 0 1px 0 0 #000;
+    }
+
+    #first_name, #password {
+        color: $off-white;
+    }
+
+    &__btn {
+        cursor: pointer;
+        color: $off-white;
+        padding: $xs 0;
+        text-align: center;
+        border-radius: $button-radius-md;
+        transition: .3s linear all;
+
+        &:hover {
+            text-decoration: inherit;
+            color: lighten($off-white, 10%);
+        }
+
+        &-login {
+            width: 45%;
+            background-color: $red;
+
+            &:hover {
+                background-color: darken($red, 10%);
+                box-shadow: $shadow;
+            }
+        }
+
+    }
+}
+
+@media (max-width: $md-screen) {
+    .home {
+        padding: 0 $sm;
+        width: 70%;
+        height: 80%;
+    }
+}
+
+@media (max-width: $sm-screen) {
+    .home {
+        padding: 0 $sm;
+        width: 80%;
+        height: 85%;
+    }
+}
+
 .error {
     color: red;
+    display: block;
     font-size: 10px;
 }
 
-.inputError {
-    border-color: red;
-}
+  /* icon prefix focus color */
+  .input-field .prefix.active {
+    color: #000;
+  }

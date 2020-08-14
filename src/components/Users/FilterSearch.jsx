@@ -10,7 +10,7 @@ function TableSearch({ onSearch }) {
   const clearSearch = () => {
     setSearchName('');
     onSearch('');
-  }
+  };
 
   return (
     <>

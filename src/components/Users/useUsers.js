@@ -6,37 +6,28 @@ import _ from 'lodash';
 const useUsers = ({ token, setToken }) => {
     const [users, setUsers] = useState([]);
     const [sortType, setSortType] = useState('asc'); 
-    const [filteredData, setFilteredData] = useState();
-    let controller = new AbortController();
+    const [filteredUsers, setFilteredUsers] = useState(null);
     const baseURL = 'https://emphasoft-test-assignment.herokuapp.com/';
     const history = useHistory();
-
-    /*   const onSort = useCallback(
-    (field) => {
-      setSortType(sortType === 'asc' ? 'desc' : 'asc');
-      setUsers(orderBy([...users], field, sortType));
-    },
-    [sortType, users]
-  ); */
 
     const submitSort = () => {
       onSort('id');
     };
 
-    const onSort = async (sortField) => {
+    const onSort = (sortField) => {
       console.log('onSort');
-      await setSortType(sortType === 'asc' ? 'desc' : 'asc');
-      await setUsers(_.orderBy([...users], sortField, sortType));
+      setSortType(sortType === 'asc' ? 'desc' : 'asc');
+      setUsers(_.orderBy([...users], sortField, sortType));
     };
   
   const onSearch = (val) => {
-    setFilteredData(getFilteredData(val));
+    setFilteredUsers(getFilteredUsers(val));
   };
 
-    const getFilteredData = useCallback(
+    const getFilteredUsers = useCallback(
       (val) => {
         if (val) {
-          return users.find(u => u['username'].toLowerCase().trim().includes(val.toLowerCase().trim()));
+          return users.filter(u => u['username'].toLowerCase().trim().includes(val.toLowerCase().trim()));
         }
         return null;
       },
@@ -50,7 +41,6 @@ const useUsers = ({ token, setToken }) => {
         try {
           const response = await fetch(baseURL + 'api/v1/users/', {
               method: 'GET',
-              /* signal: controller.signal, */
               headers: {
                 Authorization: `Token ${token}`,
               },
@@ -70,7 +60,6 @@ const useUsers = ({ token, setToken }) => {
         getUsers(token);
       }
       return () => {
-        /* controller.abort(); */
       };
     }, [token]);
 
@@ -85,10 +74,9 @@ const useUsers = ({ token, setToken }) => {
 
     return {
       users,
-      filteredData,
+      filteredUsers,
       controlLogout,
       submitSort,
-      /* onSort, */
       onSearch
     };
   

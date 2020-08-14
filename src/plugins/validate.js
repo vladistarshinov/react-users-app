@@ -4,7 +4,7 @@ const validate = values => {
     if (!values.username) {
         errors.username = "Введите логин";
     } else if (!/^[\w.@+-]{6,150}$/.test(values.username)) {
-        errors.username = "Некорректный логин. Пожалуйста, придумайте другой";
+        errors.username = "Некорректный логин. Такого пользователя нет в системе";
     } else if (values.username !== 'test_super') {
         errors.username = "Неверный логин";
     }

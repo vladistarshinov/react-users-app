@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import isEmpty from '../../plugins/isEmpty';
 
 import useUsers from './useUsers';
 
@@ -7,7 +6,7 @@ import useUsers from './useUsers';
 const Users = ({ users, token, setToken, submitSort }) => {
   const { controlLogout } = useUsers({ token, setToken });
   console.log('render');
-  return !isEmpty(users) ? (
+  return (
     <Fragment>
       <button onClick={controlLogout}>Выход</button>
       <table>
@@ -15,8 +14,8 @@ const Users = ({ users, token, setToken, submitSort }) => {
           <tr>
             <th onClick={submitSort}>ID</th>
             <th>Логин</th>
-            <th>Имя</th>
             <th>Фамилия</th>
+            <th>Имя</th>
           </tr>
         </thead>
         <tbody>
@@ -24,17 +23,12 @@ const Users = ({ users, token, setToken, submitSort }) => {
             <tr key={user.id}>
               <td>{user.id}</td>
               <td>{user.username}</td>
-              <td>{user.first_name}</td>
               <td>{user.last_name}</td>
+              <td>{user.first_name}</td>
             </tr>
           ))}
         </tbody>
       </table>
-    </Fragment>
-  ) : (
-    <Fragment>
-      <p>Пользователей не обнаружено. Добавьте пользователей</p>
-      {<button onClick={controlLogout}>fdsfd</button>}
     </Fragment>
   );
 };

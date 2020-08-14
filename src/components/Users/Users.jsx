@@ -1,22 +1,35 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import useUsers from './useUsers';
+
 import UsersList from './UsersList';
 import FilterSearch from './FilterSearch';
 
+import useUsers from './useUsers';
+import isEmpty from '../../plugins/isEmpty';
+
 const Users = ({ token, setToken }) => {
- const { users, filteredData, onSearch, submitSort } = useUsers({ token, setToken });
+ const { users, filteredUsers, onSearch, submitSort } = useUsers({ token, setToken });
   return token ? (
     <Fragment>
       <FilterSearch onSearch={onSearch} />
-      <UsersList submitSort={submitSort} users={filteredData ? filteredData : users} setToken={setToken} />
+      { isEmpty(users) ? (
+        <p>Пользователей нет в системе. Добавьте пользователей</p>
+      ) : isEmpty(filteredUsers) && filteredUsers ? (
+        <p>Пользователей с таким логином не найдено!</p>
+      ) : (
+        <UsersList 
+          users={filteredUsers ? filteredUsers : users} 
+          submitSort={submitSort} 
+          setToken={setToken} 
+        />
+      ) }
     </Fragment>
-  ) : (
+    ) : (
     <Fragment>
-        <p>Вы не авторизованы!</p>
-        <p>
-            <Link to='/'>Sign In</Link>
-        </p>
+      <p>Вы не авторизованы!</p>
+      <p>
+          <Link to='/'>Sign In</Link>
+      </p>
     </Fragment>
   );
 };
