@@ -11,29 +11,29 @@
 .home {
     background-color: rgba(0, 0, 0, .65);
     padding: 0 $md;
-    height: 75%;
+    height: 80%;
     width: 45%;
 
     &__title {
-        font-size: $lg;
+        font-size: $md;
         color: $off-white;
         font-weight: 400;
     }
 
     .input-field input[type=text]:focus {
-        border-bottom: 1px solid blue;
-        box-shadow: 0 1px 0 0 #000;
+        border-bottom: 1px solid $blue;
+        box-shadow: $shadow;
       }
     
     .input-field input[type=text].validate {
-        border-bottom: 1px solid green;
-        box-shadow: 0 1px 0 0 #000;
+        border-bottom: 1px solid $green;
+        box-shadow: $shadow;
     }
     
     .input-field input[type=text].inputError, 
     .input-field input[type=password].inputError {
-        border-bottom: 1px solid red;
-        box-shadow: 0 1px 0 0 #000;
+        border-bottom: 1px solid $red;
+        box-shadow: $shadow;
     }
 
     #first_name, #password {
@@ -78,14 +78,14 @@
     .home {
         padding: 0 $sm;
         width: 80%;
-        height: 85%;
+        height: 80%;
     }
 }
 
 .error {
-    color: red;
+    color: $red;
     display: block;
-    font-size: 10px;
+    font-size: 12px;
 }
 
   /* icon prefix focus color */

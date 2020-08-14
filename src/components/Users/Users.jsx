@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 
 import UsersList from './UsersList';
 import FilterSearch from './FilterSearch';
+import Pagination from './Pagination';
 
 import useUsers from './useUsers';
 import isEmpty from '../../plugins/isEmpty';
 
 const Users = ({ token, setToken }) => {
- const { users, filteredUsers, onSearch, submitSort } = useUsers({ token, setToken });
+ const { users, filteredUsers, onSearch, submitSort, currentListOfUsers, usersPerPage, paginate } = useUsers({ token, setToken });
+  console.log(usersPerPage);
   return token ? (
     <Fragment>
       <FilterSearch onSearch={onSearch} />
@@ -17,11 +19,14 @@ const Users = ({ token, setToken }) => {
       ) : isEmpty(filteredUsers) && filteredUsers ? (
         <p>Пользователей с таким логином не найдено!</p>
       ) : (
-        <UsersList 
-          users={filteredUsers ? filteredUsers : users} 
-          submitSort={submitSort} 
-          setToken={setToken} 
-        />
+        <Fragment>
+          <UsersList 
+            users={filteredUsers ? filteredUsers : currentListOfUsers} 
+            submitSort={submitSort} 
+            setToken={setToken} 
+          />
+          <Pagination usersPerPage={usersPerPage} totalListOfUsers={users.length} paginate={paginate} />
+        </Fragment>
       ) }
     </Fragment>
     ) : (

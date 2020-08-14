@@ -10,6 +10,15 @@ const useUsers = ({ token, setToken }) => {
     const baseURL = 'https://emphasoft-test-assignment.herokuapp.com/';
     const history = useHistory();
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const [usersPerPage] = useState(10);
+
+    const indexOfLastListOfUsers = currentPage * usersPerPage;
+    const indexOfFirstListOfUsers = indexOfLastListOfUsers - usersPerPage;
+    const currentListOfUsers = users.slice(indexOfFirstListOfUsers, indexOfLastListOfUsers);
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
     const submitSort = () => {
       onSort('id');
     };
@@ -77,7 +86,10 @@ const useUsers = ({ token, setToken }) => {
       filteredUsers,
       controlLogout,
       submitSort,
-      onSearch
+      onSearch,
+      currentListOfUsers,
+      usersPerPage,
+      paginate
     };
   
 };
