@@ -72,6 +72,10 @@
         transition: .3s linear all;
         outline: none; 
 
+        &:active {
+            outline: none;
+        }
+
         &:hover {
             text-decoration: inherit;
             color: lighten($off-white, 10%);
