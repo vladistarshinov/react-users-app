@@ -5,7 +5,6 @@ import { BDiv } from 'bootstrap-4-react';
 import CubeOutlineIcon from 'mdi-react/CubeOutlineIcon';
 
 import useAuthForm from './useAuthForm';
-/* import M from 'materialize-css'; */
 
 const AuthForm = ({ token, setToken }) => {
     const { controlChange, 
@@ -35,7 +34,7 @@ const AuthForm = ({ token, setToken }) => {
                             justifyContent="around" 
                             mt="5"
                         >
-                            <label htmlFor="first_name">Username</label>
+                            <label htmlFor="first_name">Логин</label>
                             <input 
                                 id="first_name" 
                                 name="username" 
@@ -52,7 +51,7 @@ const AuthForm = ({ token, setToken }) => {
                             justifyContent="around" 
                             mt="4"
                         >
-                            <label htmlFor="password">Password</label>
+                            <label htmlFor="password">Пароль</label>
                             <input 
                                 id="password" 
                                 name="password" 

@@ -25,7 +25,6 @@ const useUsersElements = ({ token, setToken }) => {
     };
 
     const onSort = (sortField) => {
-      console.log('onSort');
       setSortType(sortType === 'asc' ? 'desc' : 'asc');
       setUsers(_.orderBy([...users], sortField, sortType));
     };
@@ -77,7 +76,7 @@ const useUsersElements = ({ token, setToken }) => {
       () => {
         setToken(null);
         localStorage.clear();
-        history.push('/');
+        history.push('/react-users-app');
       },
       [history, setToken]
     )

@@ -10,11 +10,20 @@ const Pagination = ({ usersPerPage, totalListOfUsers, paginate }) => {
     }
 
     return (
-        <Nav display="flex" justifyContent="center" alignItems="center">
+        <Nav 
+            display="flex" 
+            justifyContent="center" 
+            alignItems="center" 
+            className="mt-2 mb-2"
+        >
             <ul className="pagination">
                 {pageNumber.map(number => (
                     <li key={number} className="page-item">
-                        <Link onClick={() => paginate(number)} to="users#" className="page-link">{number}</Link>
+                        <Link 
+                            onClick={() => paginate(number)} 
+                            to="users#" 
+                            className="page-link"
+                        >{number}</Link>
                     </li>
                 ))}
             </ul>

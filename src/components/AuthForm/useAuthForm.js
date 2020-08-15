@@ -2,7 +2,7 @@ import { useState } from 'react';
 import {useHistory} from 'react-router-dom';
 
 const useAuthForm = (validate, { setToken }) => {
-    const [values, setValues] = useState({ username: "test_super", password: "Nf<U4f<rDbtDxAPn" });
+    const [values, setValues] = useState({ username: "", password: "" });
     const [errors, setErrors] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const history = useHistory();
@@ -34,9 +34,8 @@ const useAuthForm = (validate, { setToken }) => {
           if (response.ok) {
             let json = await response.json();
             setToken(json.token);
-            console.log(json.token);
             localStorage.setItem('token', json.token);
-            history.push('users');
+            history.push('/react-users-app/users');
           } else {
             setErrors(validate(values));
           }

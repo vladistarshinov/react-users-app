@@ -6,7 +6,7 @@ const Users = ({ users, submitSort }) => {
 
   return (
     <Fragment>
-      <table class="table table-hover">
+      <table className="table table-hover">
         <thead>
           <tr>
             <th className="text-center cursor-pointer" onClick={submitSort}># <ArrowUpDownIcon /> </th>
