@@ -9,7 +9,7 @@ const AuthPage = ({ token, setToken }) => {
     console.log('render1');
     return token ? (
         <Fragment>
-            <h5 className="text-center">Вы уже авторизованы!</h5>
+            <h5 className="text-center mt-5">Вы уже авторизованы!</h5>
             <BDiv className="text-center mt-5 mb-5">
                 <Link 
                     to='/react-users-app/users' 

@@ -25,7 +25,7 @@ const AuthForm = ({ token, setToken }) => {
                     <BDiv className="mt-3 text-center">
                         {isLoading ?<CubeOutlineIcon className="home__img" color="yellow" size={72} /> : <CubeOutlineIcon color="yellow" size={72} />} 
                     </BDiv>
-                    <form action="" onSubmit={controlSubmit} noValidate>
+                    <form className="home__form" action="" onSubmit={controlSubmit} noValidate>
                         <h5 className="home__title text-center">Вход в систему</h5>
                         <BDiv 
                             className="input-field" 
@@ -61,7 +61,7 @@ const AuthForm = ({ token, setToken }) => {
                             />
                         </BDiv>
                         <span>{errors.password && <p className="error">{errors.password}</p>}</span>
-                        <BDiv w="100" display="flex" justifyContent="around">
+                        <BDiv mt="2" w="100" display="flex" justifyContent="around">
                             <button 
                                 className="home__btn home__btn-login" 
                                 type="submit"

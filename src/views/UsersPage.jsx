@@ -26,7 +26,7 @@ const UsersPage = ({ token, setToken }) => {
         { isEmpty(users) ? (
             <Loader />
         ) : isEmpty(filteredUsers) && filteredUsers ? (
-            <h5 className="text-center">Пользователей с таким логином не найдено!</h5>
+            <h5 className="text-center mt-5">Пользователей с таким логином не найдено!</h5>
             ) : (
                 <Fragment>
                     <UsersList 
@@ -45,7 +45,7 @@ const UsersPage = ({ token, setToken }) => {
     </Fragment>
     ) : (
     <Fragment>
-        <h5 className="text-center">Вы не авторизованы!</h5>
+        <h5 className="text-center mt-5">Вы не авторизованы!</h5>
         <BDiv className="text-center mt-5 mb-5">
             <Link to='/react-users-app/' className="home__btn home__btn-back">Назад</Link>
         </BDiv>  
