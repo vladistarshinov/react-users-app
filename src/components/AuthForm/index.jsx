@@ -23,7 +23,7 @@ const AuthForm = ({ token, setToken }) => {
             >
                 <section className="home">
                     <BDiv className="mt-3 text-center">
-                        <CubeOutlineIcon color="yellow" size={72} />
+                        {isLoading ?<CubeOutlineIcon className="home__img" color="yellow" size={72} /> : <CubeOutlineIcon color="yellow" size={72} />} 
                     </BDiv>
                     <form action="" onSubmit={controlSubmit} noValidate>
                         <h5 className="home__title text-center">Вход в систему</h5>

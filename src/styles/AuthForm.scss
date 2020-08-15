@@ -14,6 +14,29 @@
     height: 80%;
     width: 45%;
 
+    &__img {
+        animation: 1s linear 0s normal none infinite running rotation;
+        -webkit-animation: 1s linear 0s normal none infinite running rotation;
+        width: 100px;
+    }
+
+    @keyframes rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    @-webkit-keyframes rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
     &__title {
         font-size: $md;
         color: $off-white;
