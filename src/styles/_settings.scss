@@ -1,7 +1,14 @@
 * {
     padding: 0;
     margin: 0;
+}
+
+html {
     box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden;
 }
 
 //Colors
@@ -38,4 +45,20 @@ $shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12), 0 1p
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+.loader {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    margin-top: 30vh;
+    position: relative;
+    width: 60px;
+    height: 60px;
+}
+
+@media (max-width: $md-screen) {
+    tr {
+        font-size: 10px;
+    }
 }

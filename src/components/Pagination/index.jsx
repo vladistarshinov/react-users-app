@@ -14,7 +14,7 @@ const Pagination = ({ usersPerPage, totalListOfUsers, paginate }) => {
             display="flex" 
             justifyContent="center" 
             alignItems="center" 
-            className="mt-2 mb-2"
+            className="mt-2 mb-4"
         >
             <ul className="pagination">
                 {pageNumber.map(number => (

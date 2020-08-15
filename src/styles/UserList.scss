@@ -1,0 +1,7 @@
+@import './settings';
+
+@media (max-width: $xs-screen) {
+    .table-width {
+        max-width: 100vw;
+    }
+}

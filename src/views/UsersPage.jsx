@@ -2,15 +2,16 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { BDiv } from 'bootstrap-4-react';
 
-import UsersList from '../components/UsersList/UsersList';
+import UsersList from '../components/UsersList';
 import FilterSearch from '../components/FilterSearch';
 import Pagination from '../components/Pagination';
+import Loader from '../components/Loader';
 
 import useUsersElements from '../components/UsersList/useUsersElements';
 import isEmpty from '../plugins/isEmpty';
 
 const UsersPage = ({ token, setToken }) => {
- 
+
     const { users, 
             filteredUsers, 
             onSearch, 
@@ -23,7 +24,7 @@ const UsersPage = ({ token, setToken }) => {
     <Fragment>
       <FilterSearch onSearch={onSearch} setToken={setToken} />
         { isEmpty(users) ? (
-            <h4 className="text-center">Загрузка...</h4>
+            <Loader />
         ) : isEmpty(filteredUsers) && filteredUsers ? (
             <h5 className="text-center">Пользователей с таким логином не найдено!</h5>
             ) : (
@@ -45,7 +46,7 @@ const UsersPage = ({ token, setToken }) => {
     ) : (
     <Fragment>
         <h5 className="text-center">Вы не авторизованы!</h5>
-        <BDiv className="text-center mt-5">
+        <BDiv className="text-center mt-5 mb-5">
             <Link to='/react-users-app/' className="home__btn home__btn-back">Назад</Link>
         </BDiv>  
     </Fragment>

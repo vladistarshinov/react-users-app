@@ -47,6 +47,7 @@
         text-align: center;
         border-radius: $button-radius-md;
         transition: .3s linear all;
+        outline: none; 
 
         &:hover {
             text-decoration: inherit;
@@ -82,7 +83,6 @@
     .home {
         padding: 0 $sm;
         width: 70%;
-        height: 80%;
     }
 }
 
@@ -90,7 +90,31 @@
     .home {
         padding: 0 $sm;
         width: 80%;
-        height: 80%;
+    }
+}
+
+@media (max-width: $xs-screen) {
+    .home {
+        padding: 0 $sm;
+        width: 80%;
+    }
+}
+
+@media (max-height: $lg-screen) {
+    .home {
+        height: 55%;
+    }
+}
+
+@media (max-height: $md-screen) {
+    .home {
+        height: 65%;
+    }
+}
+
+@media (max-height: $sm-screen) {
+    .home {
+        height: 75%;
     }
 }
 

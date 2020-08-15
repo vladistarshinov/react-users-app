@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 
 import ArrowUpDownIcon from 'mdi-react/ArrowUpDownIcon';
 
-const Users = ({ users, submitSort }) => {
+const UsersList = ({ users, submitSort }) => {
 
   return (
     <Fragment>
@@ -30,4 +30,4 @@ const Users = ({ users, submitSort }) => {
   );
 };
 
-export default Users;
+export default UsersList;
